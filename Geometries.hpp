@@ -1,7 +1,7 @@
-#ifndef __GEOMETRY_HPP__
-#define __GEOMETRY_HPP__
+#ifndef __GEOMETRIES_HPP__
+#define __GEOMETRIES_HPP__
 
-namespace _Boolean::Geometry
+namespace _Boolean::Geometries
 {
     template <typename T>
     struct Point
