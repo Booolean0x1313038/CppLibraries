@@ -8,6 +8,8 @@
 #include <QDateTime>
 #include <QThread>
 
+// using namespace _Boolean::Communication;
+
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;

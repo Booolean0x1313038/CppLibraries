@@ -6,11 +6,12 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    _MODBUS_RTU_Slave = new MODBUS_RTU_Slave
 #ifndef USE_CPLUSPLUS_CLASS
-        ; MODBUS_RTU_Slave_Initialize
+    _MODBUS_RTU_Slave = new MODBUS_RTU_Slave();
+    MODBUS_RTU_Slave_Initialize(_MODBUS_RTU_Slave,1, _CoiledRegistersArray, MODBUS_COILEDREGISTERS);
+#else
+    _MODBUS_RTU_Slave = new MODBUS_RTU_Slave(1, _CoiledRegistersArray, MODBUS_COILEDREGISTERS);
 #endif
-        (_MODBUS_RTU_Slave, 1, _CoiledRegistersArray, MODBUS_COILEDREGISTERS);
     connect(ui->pushButton_Prase, SIGNAL(clicked(bool)), this, SLOT(SLOT_PushButton_Prase_Clicked()));
     connect(ui->lineEdit_Data, SIGNAL(textChanged(QString)), this, SLOT(SLOT_LineEdit_Data_TextChanged(QString)));
     connect(ui->tableWidget_RegistersAreas, SIGNAL(currentCellChanged(int,int,int,int)), this, SLOT(SLOT_TableWidget_RegisterAreas_CurrentCellChanged(int,int,int,int)));

@@ -176,6 +176,8 @@ typedef struct
 } MODBUS_RTU_CoiledRegistersArea;
 
 #ifdef USE_CPLUSPLUS_CLASS
+namespace _Boolean::Communication
+{
 class MODBUS_RTU_Slave
 {
 #endif
@@ -964,10 +966,11 @@ MODBUS_RTU_Slave_GetLastResult
     {
         return thisPtr->_LastResult;
     }
+inline static uint16_t
 #ifdef USE_CPLUSPLUS_CLASS
     GetRequestFrameLength
 #else
-inline static uint16_t MODBUS_RTU_Slave_GetRequestFrameLength
+    MODBUS_RTU_Slave_GetRequestFrameLength
 #endif
         (MODBUS_RTU_Slave *thisPtr)
     {
@@ -1008,7 +1011,7 @@ MODBUS_RTU_Slave_GetDeviceAddress
 public:
     MODBUS_RTU_Slave(uint8_t deviceAddress, MODBUS_RTU_CoiledRegistersArea *coiledRegisters, size_t coiledRegistersAmount)
     {
-        Initialize(this, deviceAddress, coiledRegisters, coiledRegistersAmount);
+        MODBUS_RTU_Slave_Initialize(this, deviceAddress, coiledRegisters, coiledRegistersAmount);
     }
     inline MODBUS_RTU_ResultCode GetLastResult() { return GetLastResult(this); }
     inline size_t GetReturnFrameLength() { return GetReturnFrameLength(this); }
@@ -1022,6 +1025,7 @@ public:
 private:
 #endif
 #ifdef USE_CPLUSPLUS_CLASS
+};
 };
 #endif
 
